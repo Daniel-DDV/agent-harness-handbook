@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: Agent Harness Handbook
+message: If you use this work, please cite it using this metadata.
+type: software
+authors:
+  - name: Daniel
+    alias: Daniel-DDV
+repository-code: https://github.com/Daniel-DDV/agent-harness-handbook
+license: MIT
+version: 1.0.0
+date-released: 2026-09-08
+abstract: An evidence-first operating handbook and toolkit for reliable AI coding agents.
