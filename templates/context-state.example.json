@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "intent": "Describe one observable outcome",
+  "invariants": [
+    "State what must not change"
+  ],
+  "allowed_paths": [
+    "src/component",
+    "tests/test_component*.py"
+  ],
+  "out_of_scope": [
+    "Dependencies",
+    "Public API changes"
+  ],
+  "acceptance_criteria": [
+    "Describe observable behavior"
+  ],
+  "verification": [
+    "pytest tests/test_component.py"
+  ],
+  "max_same_failure_attempts": 2,
+  "same_failure_attempts": 0,
+  "last_failure_signature": null,
+  "failed_hypotheses": [],
+  "progress_summary": "Not started",
+  "next_action": "Inspect relevant files and restate the contract",
+  "created_at": "2026-09-08T00:00:00+00:00",
+  "updated_at": "2026-09-08T00:00:00+00:00"
+}

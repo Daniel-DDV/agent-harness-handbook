@@ -12,20 +12,28 @@ REQUIRED = [
     "AGENTS.md",
     "CITATION.cff",
     "docs/HANDBOOK.md",
+    "docs/CONTEXT_GUARD.md",
     "docs/LIMITATIONS.md",
     "docs/SOURCES.md",
     "templates/work-definition.md",
     "templates/session-card.md",
+    "templates/context-state.example.json",
     "templates/evidence-bundle.md",
     "templates/autonomy-decision.md",
     "templates/setup-audit.md",
     "skills/agent-run-contract/SKILL.md",
     "skills/agent-setup-audit/SKILL.md",
+    "skills/context-checkpoint/SKILL.md",
+    "skills/drift-audit/SKILL.md",
+    "scripts/context_guard.py",
+    "tests/test_context_guard.py",
 ]
+
 
 def fail(message):
     print(f"ERROR: {message}")
     return 1
+
 
 errors = 0
 for relative in REQUIRED:

@@ -10,7 +10,9 @@ Use behavior rather than implementation detail. A useful boundary is as importan
 
 Context is finite and degrades before the advertised window is full. Keep persistent instructions limited to facts that are both non-obvious from the repository and relevant to nearly every task. Put task-specific state in the work definition.
 
-Use progressive disclosure: load names and descriptions first, procedures only when selected, and references only when needed. Prefer isolated, fresh-context workers over repeatedly compressing a polluted session. Store each durable decision at its natural owner: product decision in a spec, architecture decision in an ADR, repository rule in AGENTS.md, and operating lesson in a runbook.
+Use progressive disclosure: load names and descriptions first, procedures only when selected, and references only when needed. Prefer isolated, fresh-context workers over repeatedly compressing a polluted session. Store each durable decision at its natural owner.
+
+For active work, use `.agent/context.json` as the compact handoff artifact. It holds the approved intent, invariants, scope, acceptance criteria, failed hypotheses, progress summary, and one next action. Refresh it before compaction, handoff, or restart. The context guard detects file-scope drift and repeated failures; it does not claim to measure a model's internal attention.
 
 ## 3. Harness and permissions
 
@@ -20,7 +22,7 @@ Prompt text is not a security boundary. Use isolated and recoverable environment
 
 ## 4. Execution budgets
 
-Every delegated run needs a read budget, loop budget, check budget, and output budget. Stop after two attempts at the same failure unless a materially new diagnosis exists. Permit at most one scope-expansion request before rewriting the work definition.
+Every delegated run needs a read budget, loop budget, check budget, and output budget. Stop after two attempts at the same normalized failure unless a materially new diagnosis exists. Permit at most one scope-expansion request before rewriting the work definition.
 
 Track task type, model, elapsed time, tool calls, retries, checks, changed files, stop reason, and outcome. Optimize the environment rather than rewarding raw activity.
 
@@ -59,7 +61,7 @@ Stop when the bar is met, no material gap remains, marginal improvement costs mo
 
 After a correction, capture the failure pattern, root cause, prevention rule, and destination. Promote repeated controls to the narrowest durable mechanism: deterministic control to a script or hook, situational procedure to a skill, and short universal fact to AGENTS.md.
 
-After two failed corrections without a new diagnosis, stop the session. Start a clean session with a prompt that includes the evidence and failed hypotheses. Compare harness changes on a fixed reference task before declaring improvement.
+After two failed corrections without a new diagnosis, stop the session. Start a clean session with a prompt that includes the checkpoint, evidence, and failed hypotheses. Compare harness changes on a fixed reference task before declaring improvement.
 
 ## 9. Setup audit
 
@@ -72,8 +74,8 @@ Separate audit from modification. Produce the table first; change nothing until 
 1. Establish one reference task and baseline.
 2. Audit existing hooks and permissions read-only.
 3. Prune persistent context and overlapping skills.
-4. Introduce the work definition and session card.
-5. Require an evidence bundle.
+4. Introduce the work definition and initialize the context checkpoint.
+5. Require an evidence bundle and drift report.
 6. Add deterministic controls only for repeated, measurable failures.
 7. Increase autonomy only after rollback and verification are proven.
 8. Re-run the reference task and record the delta.
